@@ -1,0 +1,571 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Maulya's Love Letter</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Nunito:wght@400;600;800&display=swap">
+<style>
+/* Layout: sealed envelope intro, then one warm scroll: hero with a tiny to-do, handwritten letter on airmail paper, lucky cookies, cherry countdown band, big finale with a beating heart.
+   Single committed look (cherry red against light blue, butter yellow as sparkle), so every color is set explicitly. */
+:root {
+  --cherry: #D0103A;
+  --cherry-deep: #8E0A28;
+  --cherry-soft: #E8325A;
+  --sky: #BFE4F7;
+  --sky-soft: #E6F5FD;
+  --sky-deep: #6FBDE6;
+  --butter: #FFD45E;
+  --ink: #3B0B18;
+  --paper: #FFFDFB;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-hand: 'Caveat', 'Segoe Script', 'Bradley Hand', cursive;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html.locked, html.locked body { overflow: hidden; }
+body {
+  background: var(--sky-soft);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--cherry); outline-offset: 3px; border-radius: 6px; }
+
+.wrap {
+  width: 100%;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 56px;
+}
+h1, h2 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+h2 { font-weight: 800; font-size: clamp(1.75rem, 6.4vw, 2.5rem); line-height: 1.1; color: var(--cherry); }
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--cherry-deep);
+}
+.sub { margin: 10px 0 0; max-width: 46ch; }
+
+/* ---------- Envelope intro ---------- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 24px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px));
+  background: linear-gradient(160deg, var(--sky) 0%, var(--sky-soft) 100%);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.intro.leave { opacity: 0; transform: scale(1.06); pointer-events: none; }
+.intro-top { font-family: var(--font-hand); font-weight: 700; font-size: 1.9rem; color: var(--cherry-deep); margin: 0; text-align: center; }
+.intro-hint { margin: 0; font-weight: 800; font-size: .9rem; letter-spacing: .06em; color: var(--cherry-deep); text-align: center; transition: opacity .3s; }
+.env.open ~ .intro-hint, .intro.opened .intro-hint { opacity: 0; }
+
+.env {
+  position: relative;
+  width: min(88vw, 380px);
+  aspect-ratio: 3 / 2;
+  perspective: 1200px;
+  margin-top: 96px;
+}
+.env-back { position: absolute; inset: 0; background: var(--cherry-deep); border-radius: 10px; z-index: 0; box-shadow: 0 18px 36px rgba(142,10,40,.28); }
+.env-paper {
+  position: absolute;
+  left: 7%; right: 7%; top: 8%; height: 84%;
+  background: var(--paper);
+  border-radius: 6px;
+  z-index: 1;
+  padding: 14px 16px;
+  transition: transform .75s cubic-bezier(.3,.8,.3,1) .6s;
+}
+.env-paper b { display: block; font-family: var(--font-hand); font-size: 1.8rem; color: var(--cherry); line-height: 1; }
+.env-paper i { display: block; height: 3px; border-radius: 2px; background: var(--sky); margin-top: 12px; }
+.env-paper i:nth-of-type(2) { width: 78%; }
+.env-paper i:nth-of-type(3) { width: 54%; }
+.env.open .env-paper { transform: translateY(-62%); }
+.env-front {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(180deg, #DE1B45, var(--cherry));
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 0 0 10px 10px;
+}
+.env-flap {
+  position: absolute; top: 0; left: 0; width: 100%; height: 52%;
+  z-index: 3;
+  transform-origin: top center;
+  transition: transform .8s ease, z-index 0s linear .35s;
+  filter: drop-shadow(0 4px 3px rgba(59,11,24,.28));
+}
+.env-flap span { display: block; width: 100%; height: 100%; background: #E8325A; clip-path: polygon(0 0, 100% 0, 50% 100%); border-radius: 10px 10px 0 0; }
+.env.open .env-flap { transform: rotateX(180deg); z-index: 0; }
+.env-to {
+  position: absolute; left: 0; right: 0; bottom: 12%; z-index: 4; margin: 0;
+  text-align: center; font-family: var(--font-hand); font-weight: 700;
+  font-size: clamp(1.9rem, 8vw, 2.5rem); line-height: 1; color: #fff;
+  text-shadow: 0 2px 0 rgba(142,10,40,.45);
+  transition: opacity .3s;
+}
+.env.open .env-to { opacity: 0; }
+.seal {
+  position: absolute; left: 50%; top: 52%; z-index: 5;
+  width: 68px; height: 68px; border-radius: 50%; border: 0; cursor: pointer;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 35% 30%, #FFE58C, var(--butter) 60%, #F0B93A);
+  box-shadow: 0 6px 14px rgba(59,11,24,.35), inset 0 -3px 0 rgba(0,0,0,.12);
+  display: grid; place-items: center;
+  animation: pulse 1.6s ease-in-out infinite;
+  transition: opacity .25s, scale .25s;
+}
+.seal svg { width: 34px; height: 31px; fill: var(--cherry); }
+.env.open .seal { animation: none; opacity: 0; scale: 1.6; pointer-events: none; }
+@keyframes pulse { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.12); } }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--sky) 0%, var(--sky-soft) 100%); }
+.hero .wrap { position: relative; z-index: 1; padding-block: 64px 56px; }
+.hero h1 { font-weight: 800; font-size: clamp(2.3rem, 9.5vw, 4.2rem); line-height: 1.02; letter-spacing: -.01em; }
+.hero h1 em { display: block; font-style: italic; font-weight: 600; color: var(--cherry); }
+.lede { margin: 20px 0 0; max-width: 50ch; font-size: 1.1rem; }
+.drift { position: absolute; fill: var(--cherry); opacity: .22; animation: float 7s ease-in-out infinite; }
+.drift.d1 { width: 46px; left: 6%; top: 14%; }
+.drift.d2 { width: 28px; right: 10%; top: 10%; fill: #fff; opacity: .7; animation-delay: -2s; }
+.drift.d3 { width: 64px; right: 4%; top: 46%; animation-delay: -4s; }
+.drift.d4 { width: 24px; left: 12%; bottom: 14%; fill: var(--butter); opacity: .9; animation-delay: -1s; }
+.drift.d5 { width: 34px; right: 28%; bottom: 8%; fill: #fff; opacity: .6; animation-delay: -5s; }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-18px) rotate(6deg); } }
+
+.todo { margin-top: 32px; padding: 20px; border-radius: 16px; background: rgba(255,255,255,.7); border: 2px solid var(--cherry); max-width: 520px; }
+.todo h3 { margin: 0 0 12px; font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  border: 2px solid var(--cherry); background: var(--paper); color: var(--cherry-deep);
+  border-radius: 999px; padding: 8px 16px; font-weight: 800; font-size: .95rem; cursor: pointer;
+  transition: background .2s, color .2s, transform .15s;
+}
+.chip:hover { transform: translateY(-2px); }
+.chip[aria-pressed="true"] { background: var(--cherry); color: #fff; }
+.chip[aria-pressed="true"]::before { content: "\2713\00a0"; }
+.todo-note { margin: 12px 0 0; font-size: .95rem; min-height: 1.6em; }
+
+/* ---------- Letter ---------- */
+.letter-sec { background: var(--sky-soft); }
+.paper {
+  margin: 28px auto 0; max-width: 640px; background: var(--paper);
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 2px 0 rgba(59,11,24,.06), 0 22px 40px rgba(111,189,230,.55);
+  transform: rotate(-.6deg);
+}
+.paper::before, .paper::after {
+  content: ""; display: block; height: 12px;
+  background: repeating-linear-gradient(-45deg, var(--cherry) 0 14px, var(--paper) 14px 22px, var(--sky-deep) 22px 36px, var(--paper) 36px 44px);
+}
+.paper-in { padding: 30px max(22px, 5vw) 26px; font-family: var(--font-hand); font-size: clamp(1.45rem, 5.2vw, 1.75rem); line-height: 1.38; }
+.paper-in p { margin: 0 0 .75em; }
+.paper-in .to { font-weight: 700; font-size: 1.2em; color: var(--cherry); }
+.sign { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+.sign p { margin: 0; font-weight: 700; color: var(--cherry-deep); }
+.paper-in strong { color: var(--cherry); font-weight: 700; }
+.paper-in .fin { font-weight: 700; color: var(--cherry-deep); font-size: 1.15em; margin-top: 1em; }
+.sign { justify-content: flex-end; }
+.stamp {
+  width: 84px; height: 84px; border-radius: 50%; border: 3px double var(--cherry);
+  display: grid; place-items: center; text-align: center; transform: rotate(-12deg);
+  color: var(--cherry); font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: .78rem; line-height: 1.1; opacity: .85;
+}
+.stamp svg { width: 20px; height: 18px; fill: var(--cherry); display: block; margin: 0 auto 2px; }
+
+/* ---------- Cookies ---------- */
+.cookie-sec { background: var(--sky); }
+.cookies { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: 520px; margin: 30px auto 0; }
+.cookie { --r: 0deg; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.cookie:nth-child(1) { --r: -6deg; }
+.cookie:nth-child(2) { --r: 3deg; }
+.cookie:nth-child(3) { --r: -2deg; }
+.cookie svg { display: block; width: 100%; height: auto; transform: rotate(var(--r)); transition: transform .2s; overflow: visible; }
+.cookie:hover svg { transform: translateY(-5px) rotate(calc(var(--r) - 4deg)); }
+.cookie.crack svg { animation: crack .7s ease; }
+@keyframes crack {
+  0% { transform: rotate(var(--r)) scale(1); }
+  15% { transform: rotate(-14deg) scale(1.1); }
+  30% { transform: rotate(12deg) scale(1.1); }
+  45% { transform: rotate(-9deg) scale(1.06); }
+  60% { transform: rotate(6deg) scale(1.03); }
+  100% { transform: rotate(var(--r)) scale(1); }
+}
+.slip {
+  margin: 26px auto 0; max-width: 520px; min-height: 136px; display: grid; place-items: center; text-align: center;
+  background: var(--paper); border: 2px dashed var(--cherry); border-radius: 6px; padding: 20px 22px;
+  box-shadow: 0 8px 0 rgba(208,16,58,.14);
+}
+.slip p { margin: 0; font-family: var(--font-hand); font-weight: 700; font-size: clamp(1.75rem, 6.6vw, 2.25rem); line-height: 1.18; color: var(--cherry); text-wrap: balance; }
+.slip.empty p { color: rgba(59,11,24,.6); font-weight: 500; }
+.slip.new { animation: unroll .45s cubic-bezier(.3,1.4,.5,1); }
+@keyframes unroll { from { transform: scaleY(.25); opacity: .2; } to { transform: scaleY(1); opacity: 1; } }
+.cookie-meta { margin: 14px 0 0; text-align: center; font-size: .9rem; font-weight: 600; color: var(--cherry-deep); min-height: 1.5em; }
+
+/* ---------- Countdown ---------- */
+.band { background: var(--cherry); color: #fff; text-align: center; }
+.band .eyebrow { color: var(--butter); }
+.band h2 { color: #fff; }
+.date-pill { display: inline-block; margin-top: 14px; background: var(--butter); color: var(--ink); font-weight: 800; border-radius: 999px; padding: 4px 16px; font-size: .95rem; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; max-width: 520px; margin: 28px auto 0; }
+.tile { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.4); border-radius: 14px; padding: 14px 4px 10px; }
+.tile b { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.7rem, 8vw, 3rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.tile span { display: block; margin-top: 6px; font-size: .65rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; opacity: .92; }
+.party { margin: 28px auto 0; max-width: 520px; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 7vw, 2.4rem); line-height: 1.15; color: var(--butter); text-wrap: balance; }
+.band .small { margin: 18px 0 0; font-size: .95rem; opacity: .95; }
+
+/* ---------- Finale ---------- */
+.finale { background: linear-gradient(180deg, var(--sky-soft) 0%, var(--sky) 100%); text-align: center; }
+.finale .wrap { padding-block: 72px 80px; }
+.big { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(2.1rem, 10.5vw, 4.8rem); line-height: 1.04; letter-spacing: -.005em; color: var(--cherry); overflow-wrap: anywhere; }
+.big mark { background: linear-gradient(transparent 58%, var(--butter) 58% 92%, transparent 92%); color: inherit; padding: 0 .1em; }
+.heart-btn { display: block; margin: 34px auto 0; border: 0; background: none; padding: 0; cursor: pointer; width: clamp(170px, 52vw, 270px); -webkit-tap-highlight-color: transparent; }
+.heart-btn svg { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 16px 22px rgba(208,16,58,.38)); animation: beat 1.35s ease-in-out infinite; transform-origin: center 60%; }
+@keyframes beat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.14); } 28% { transform: scale(1); } 42% { transform: scale(1.1); } 70% { transform: scale(1); } }
+
+/* ---------- Hearts layer ---------- */
+#fx { position: fixed; inset: 0; z-index: 200; pointer-events: none; overflow: hidden; }
+.pop { position: fixed; display: block; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seal, .drift, .heart-btn svg { animation: none; }
+  .env-paper, .env-flap, .intro { transition-duration: .01s; transition-delay: 0s; }
+  .cookie.crack svg, .slip.new { animation: none; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <symbol id="heart" viewBox="0 0 32 29"><path d="M16 28C14 26.5 1 17.5 1 8.5C1 3.8 4.6 1 8.5 1C11.7 1 14.4 2.7 16 5.6C17.6 2.7 20.3 1 23.5 1C27.4 1 31 3.8 31 8.5C31 17.5 18 26.5 16 28Z"/></symbol>
+</svg>
+
+<div id="fx" aria-hidden="true"></div>
+
+<!-- Envelope intro -->
+<div class="intro" id="intro">
+  <p class="intro-top">Psst, Maulya... this is for you</p>
+  <div class="env" id="env">
+    <div class="env-back"></div>
+    <div class="env-paper"><b>For my Maulya</b><i></i><i></i><i></i></div>
+    <div class="env-front"></div>
+    <div class="env-flap"><span></span></div>
+    <p class="env-to">To the best wifey</p>
+    <button class="seal" id="seal" type="button" aria-label="Open the letter. To the best wifey">
+      <svg viewBox="0 0 32 29" aria-hidden="true"><use href="#heart"/></svg>
+    </button>
+  </div>
+  <p class="intro-hint" id="hint">Tap the heart to open</p>
+</div>
+
+<main>
+  <header class="hero">
+    <svg class="drift d1" viewBox="0 0 32 29" aria-hidden="true"><use href="#heart"/></svg>
+    <svg class="drift d2" viewBox="0 0 32 29" aria-hidden="true"><use href="#heart"/></svg>
+    <svg class="drift d3" viewBox="0 0 32 29" aria-hidden="true"><use href="#heart"/></svg>
+    <svg class="drift d4" viewBox="0 0 32 29" aria-hidden="true"><use href="#heart"/></svg>
+    <svg class="drift d5" viewBox="0 0 32 29" aria-hidden="true"><use href="#heart"/></svg>
+    <div class="wrap">
+      <p class="eyebrow">For Maulya, with all my love</p>
+      <h1>You are amazing.<br>You are loved.<em>You are never alone.</em></h1>
+      <p class="lede">I know you're not feeling your best and there's a lot on your mind. So here's a small corner of the internet that is only about you. Read it slowly, and smile at least once.</p>
+      <div class="todo">
+        <h3>Your only to-do list today</h3>
+        <div class="chips" id="chips">
+          <button class="chip" type="button" aria-pressed="false">Drink some water</button>
+          <button class="chip" type="button" aria-pressed="false">Rest a little</button>
+          <button class="chip" type="button" aria-pressed="false">Smile once</button>
+        </div>
+        <p class="todo-note" id="todoNote" aria-live="polite">Tap each one when it's done. Nothing else is allowed on this list.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="letter-sec">
+    <div class="wrap">
+      <p class="eyebrow">Read this one slowly</p>
+      <h2>A letter from me to you</h2>
+      <article class="paper">
+        <div class="paper-in">
+          <p>My dear wifey, aap na best hooo. But uk wts even better? Its when u r genuinely dil se happy. Jaan pata hai the small moments when we r talking be it chat or call or the time when we r on meet. All of it feels the best to me. Haan kabhi kabhi mood kharab hota hai toh irritating feel hota hai, but my cutu it all comes along at the end na. Ik u r always with me, u care for me nd u give me the best advices. Your 24/7 life support is always with u too devi ji and will always be. At times when am not upto the mark sowie for that. M also constantly learning nd tryna grow in that aspect too.</p>
+          <p>Sleep schedule we gonna fix nowww. Dw abt that too. You know u should be proud of urself. Aise he nahi bolra.</p>
+          <p>Btau Kaise? Woh baat kuch aisi hai ki u try and give it ur all in everything u do be it anything. Aap apna best dete ho. Kabhi kabhi results ain't how u want it to be nd it does makes u sad but the best part is u don't give up and u try again. U r also gd at a lot of stuff. One of the recent examples are the cv wala project u made jisme u spent lots n lots of time and efforts nd it came out sooo welll. UI in truchat which was the star of our project. Uk both were totally made by u. Absegd at taking urself bhi banne ka hai. Proper health care and healthy lifestyle maintainance mode onnn</p>
+          <p>All in all jaan i want to tell you something <strong>I am soooo grateful to have met an amazing person like you. And uk u r the world to me. I really wish ham dono hamesha aise he sath rahe nd khush rahe jaan. Also milady pls don't be too harsh on urself. You r doing good and you will alays do</strong></p>
+          <p>You remember what we used to say a lot. <strong>"Lets grow together and glow together"</strong></p>
+          <p class="fin">I Love You Veryyyyyyy Muchhhhh Maulya &#128536;</p>
+          <div class="sign">
+            <div class="stamp" aria-hidden="true"><div><svg viewBox="0 0 32 29"><use href="#heart"/></svg>With love</div></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="cookie-sec">
+    <div class="wrap">
+      <p class="eyebrow">Just for you</p>
+      <h2>Crack a lucky cookie</h2>
+      <p class="sub">Pick any cookie. Every single one has something sweet written inside, and there are plenty more where these came from.</p>
+      <div class="cookies" id="cookies">
+        <button class="cookie" type="button" aria-label="Crack a lucky cookie">
+          <svg viewBox="0 0 120 96" aria-hidden="true"><ellipse cx="60" cy="89" rx="38" ry="5" fill="rgba(59,11,24,.14)"/><path d="M8 58C6 28 38 8 66 12C98 16 114 42 104 66C96 82 72 86 52 82C28 78 9 74 8 58Z" fill="#F4B942"/><path d="M62 14C50 32 54 60 78 83" fill="none" stroke="#C9822B" stroke-width="3.5" stroke-linecap="round"/><path d="M20 44C26 28 44 18 58 18" fill="none" stroke="#FFE08A" stroke-width="4.5" stroke-linecap="round" opacity=".85"/><use href="#heart" x="76" y="34" width="16" height="14" fill="#D0103A"/></svg>
+        </button>
+        <button class="cookie" type="button" aria-label="Crack a lucky cookie">
+          <svg viewBox="0 0 120 96" aria-hidden="true"><ellipse cx="60" cy="89" rx="38" ry="5" fill="rgba(59,11,24,.14)"/><path d="M8 58C6 28 38 8 66 12C98 16 114 42 104 66C96 82 72 86 52 82C28 78 9 74 8 58Z" fill="#F4B942"/><path d="M62 14C50 32 54 60 78 83" fill="none" stroke="#C9822B" stroke-width="3.5" stroke-linecap="round"/><path d="M20 44C26 28 44 18 58 18" fill="none" stroke="#FFE08A" stroke-width="4.5" stroke-linecap="round" opacity=".85"/><use href="#heart" x="76" y="34" width="16" height="14" fill="#D0103A"/></svg>
+        </button>
+        <button class="cookie" type="button" aria-label="Crack a lucky cookie">
+          <svg viewBox="0 0 120 96" aria-hidden="true"><ellipse cx="60" cy="89" rx="38" ry="5" fill="rgba(59,11,24,.14)"/><path d="M8 58C6 28 38 8 66 12C98 16 114 42 104 66C96 82 72 86 52 82C28 78 9 74 8 58Z" fill="#F4B942"/><path d="M62 14C50 32 54 60 78 83" fill="none" stroke="#C9822B" stroke-width="3.5" stroke-linecap="round"/><path d="M20 44C26 28 44 18 58 18" fill="none" stroke="#FFE08A" stroke-width="4.5" stroke-linecap="round" opacity=".85"/><use href="#heart" x="76" y="34" width="16" height="14" fill="#D0103A"/></svg>
+        </button>
+      </div>
+      <div class="slip empty" id="slip" aria-live="polite"><p id="slipText">Tap a cookie to find your message</p></div>
+      <p class="cookie-meta" id="cookieMeta"></p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow" id="annEyebrow">Counting every day</p>
+      <h2 id="annTitle">Our 1st anniversary is coming</h2>
+      <span class="date-pill">4 November 2026</span>
+      <div class="tiles" id="tiles">
+        <div class="tile"><b id="cd-d">00</b><span>Days</span></div>
+        <div class="tile"><b id="cd-h">00</b><span>Hours</span></div>
+        <div class="tile"><b id="cd-m">00</b><span>Minutes</span></div>
+        <div class="tile"><b id="cd-s">00</b><span>Seconds</span></div>
+      </div>
+      <p class="party" id="party" hidden>Happy anniversary, my love!</p>
+      <p class="small" id="annNote">One year since we started dating, and I'd choose you all over again.</p>
+    </div>
+  </section>
+
+  <section class="finale">
+    <div class="wrap">
+      <h2 class="big">I love you veryyyyy muchhh <mark>Maulya</mark></h2>
+      <button class="heart-btn" id="bigHeart" type="button" aria-label="A big beating heart. Tap to send hearts">
+        <svg viewBox="0 0 32 29" aria-hidden="true">
+          <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF4D6D"/><stop offset="1" stop-color="#B80C30"/></linearGradient></defs>
+          <path d="M16 28C14 26.5 1 17.5 1 8.5C1 3.8 4.6 1 8.5 1C11.7 1 14.4 2.7 16 5.6C17.6 2.7 20.3 1 23.5 1C27.4 1 31 3.8 31 8.5C31 17.5 18 26.5 16 28Z" fill="url(#hg)"/>
+          <ellipse cx="9" cy="8" rx="4.2" ry="2.4" transform="rotate(-35 9 8)" fill="#fff" opacity=".4"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var COLORS = ['#D0103A', '#FF5C7C', '#FFD45E', '#6FBDE6', '#E8325A'];
+  var fx = document.getElementById('fx');
+
+  /* ===== Cookie messages. ADD MORE ANYTIME: just add a new line inside this list. ===== */
+  var MESSAGES = [
+    "Jaan, you've got the best smile ever. Always keep smiling!",
+    "Yaar, aap kitne awesome ho!",
+    "You are the gem of my life.",
+    "Smile plsss, acchi lagti hai aap par.",
+    "Malkin, always trust yourself.",
+    "Look who it is, the world's prettiest girl!",
+    "Queen, you are da besttttttt!",
+    /* more in the same spirit, used once the first ones have all been opened */
+    "Today's rule: rest, water, and one big smile. I'll handle the rest.",
+    "Aap jaisa koi nahi hai, seriously. You are one of a kind.",
+    "Malkin, tension ko bolo bye bye. Main hoon na!",
+    "Queen, even on tired days you shine the brightest.",
+    "The prettiest, the strongest, and the most loved. You're all three, always.",
+    "Yaar, aap itne sweet ho ki sugar bhi jealous ho jaye.",
+    "Gem of my life, you don't have to be strong today. Just rest. I've got you.",
+    "Your smile is my favourite notification.",
+    "Look who it is, pretty even with a sniffle!",
+    "Jaan, one step at a time. You've handled so much already, and you'll handle this too.",
+    "Smile plsss, duniya aur khoobsurat lagti hai jab aap hasti ho.",
+    "Malkin, you're doing better than you think.",
+    "Whatever happens, we face it together. Always.",
+    "Queen, you're allowed to rest. The kingdom can wait.",
+    "You're my favourite person, my safe place, my home.",
+    "Yaar, aap ho hi itne awesome, I can't even!",
+    "Pretty girl alert! Please smile, the world needs it.",
+    "Sab theek ho jayega. And I'll be right here till it does.",
+    "You are loved more than you know, Maulya.",
+    "Gem, queen, jaan, malkin: so many names, one amazing you."
+  ];
+
+  /* ===== Hearts burst ===== */
+  function burst(x, y, n) {
+    if (reduce) n = Math.min(n, 6);
+    for (var i = 0; i < n; i++) {
+      var el = document.createElement('span');
+      var size = 14 + Math.random() * 22;
+      el.className = 'pop';
+      el.style.cssText = 'left:' + x + 'px;top:' + y + 'px;width:' + size + 'px;height:' + size + 'px;color:' + COLORS[i % COLORS.length];
+      el.innerHTML = '<svg viewBox="0 0 32 29" fill="currentColor" width="100%" height="100%"><use href="#heart"/></svg>';
+      fx.appendChild(el);
+      var ang = Math.random() * Math.PI * 2;
+      var dist = 60 + Math.random() * 120;
+      var dx = Math.cos(ang) * dist;
+      var dy = Math.sin(ang) * dist - 90;
+      var rot = (Math.random() - 0.5) * 60;
+      var anim = el.animate([
+        { transform: 'translate(-50%,-50%) scale(.3)', opacity: 1 },
+        { transform: 'translate(calc(-50% + ' + dx + 'px),calc(-50% + ' + dy + 'px)) scale(1) rotate(' + rot + 'deg)', opacity: 1, offset: 0.6 },
+        { transform: 'translate(calc(-50% + ' + dx * 1.1 + 'px),calc(-50% + ' + (dy + 80) + 'px)) scale(.8)', opacity: 0 }
+      ], { duration: 1300 + Math.random() * 600, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'forwards' });
+      (function (node) { anim.onfinish = function () { node.remove(); }; })(el);
+    }
+  }
+  function burstAt(node, n) {
+    var r = node.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + r.height / 2, n);
+  }
+
+  /* ===== Envelope ===== */
+  var root = document.documentElement;
+  var intro = document.getElementById('intro');
+  var env = document.getElementById('env');
+  var seal = document.getElementById('seal');
+  root.classList.add('locked');
+  seal.addEventListener('click', function () {
+    if (env.classList.contains('open')) return;
+    env.classList.add('open');
+    intro.classList.add('opened');
+    burstAt(seal, 20);
+    setTimeout(function () {
+      intro.classList.add('leave');
+      root.classList.remove('locked');
+      window.scrollTo(0, 0);
+      setTimeout(function () {
+        intro.hidden = true;
+        burst(window.innerWidth / 2, window.innerHeight * 0.38, 28);
+      }, reduce ? 50 : 700);
+    }, reduce ? 500 : 2100);
+  });
+
+  /* ===== Tiny to-do ===== */
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#chips .chip'));
+  var todoNote = document.getElementById('todoNote');
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      var on = c.getAttribute('aria-pressed') === 'true';
+      c.setAttribute('aria-pressed', on ? 'false' : 'true');
+      if (!on) burstAt(c, 5);
+      var done = chips.filter(function (x) { return x.getAttribute('aria-pressed') === 'true'; }).length;
+      if (done === chips.length) {
+        todoNote.textContent = "All done. I'm so proud of you, jaan.";
+        burstAt(todoNote, 22);
+      } else if (done > 0) {
+        todoNote.textContent = done + " of " + chips.length + " done. You're doing great.";
+      } else {
+        todoNote.textContent = "Tap each one when it's done. Nothing else is allowed on this list.";
+      }
+    });
+  });
+
+  /* ===== Lucky cookies (shuffle bag: no repeats until every message has been seen) ===== */
+  var bag = [];
+  var last = null;
+  var cracked = 0;
+  var wrapped = false;
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function nextMessage() {
+    if (!bag.length) {
+      if (cracked > 0) wrapped = true;
+      bag = shuffle(MESSAGES.slice());
+      if (bag.length > 1 && bag[bag.length - 1] === last) {
+        var t = bag[0]; bag[0] = bag[bag.length - 1]; bag[bag.length - 1] = t;
+      }
+    }
+    last = bag.pop();
+    return last;
+  }
+  var slip = document.getElementById('slip');
+  var slipText = document.getElementById('slipText');
+  var meta = document.getElementById('cookieMeta');
+  Array.prototype.forEach.call(document.querySelectorAll('.cookie'), function (btn) {
+    btn.addEventListener('click', function () {
+      btn.classList.remove('crack');
+      void btn.offsetWidth;
+      btn.classList.add('crack');
+      var wasEmpty = bag.length === 0;
+      var msg = nextMessage();
+      cracked++;
+      slipText.textContent = msg;
+      slip.classList.remove('empty', 'new');
+      void slip.offsetWidth;
+      slip.classList.add('new');
+      meta.textContent = (wrapped && wasEmpty)
+        ? "You've read every message! Here they come again, freshly shuffled."
+        : "Cookies cracked: " + cracked;
+      burstAt(btn, 12);
+    });
+  });
+
+  /* ===== Anniversary countdown (4 November) ===== */
+  function ordinal(n) {
+    var s = ['th', 'st', 'nd', 'rd'], v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  }
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  var el = {
+    d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
+    m: document.getElementById('cd-m'), s: document.getElementById('cd-s'),
+    tiles: document.getElementById('tiles'), party: document.getElementById('party'),
+    title: document.getElementById('annTitle'), eyebrow: document.getElementById('annEyebrow'),
+    note: document.getElementById('annNote')
+  };
+  var pill = document.querySelector('.date-pill');
+  function tick() {
+    var now = new Date();
+    var y = now.getFullYear();
+    var start = new Date(y, 10, 4, 0, 0, 0);
+    var end = new Date(y, 10, 5, 0, 0, 0);
+    if (now >= end) { y += 1; start = new Date(y, 10, 4, 0, 0, 0); }
+    var nth = y - 2025;
+    pill.textContent = '4 November ' + y;
+    if (now >= start && now < end) {
+      el.title.textContent = 'Our ' + ordinal(nth) + ' anniversary is TODAY';
+      el.eyebrow.textContent = 'It is finally here';
+      el.tiles.hidden = true;
+      el.party.hidden = false;
+      el.note.textContent = 'Thank you for every day of this year. I love you more than words can say.';
+      return;
+    }
+    el.title.textContent = 'Our ' + ordinal(nth) + ' anniversary is coming';
+    el.tiles.hidden = false;
+    el.party.hidden = true;
+    var diff = Math.max(0, start - now);
+    var secs = Math.floor(diff / 1000);
+    el.d.textContent = pad(Math.floor(secs / 86400));
+    el.h.textContent = pad(Math.floor((secs % 86400) / 3600));
+    el.m.textContent = pad(Math.floor((secs % 3600) / 60));
+    el.s.textContent = pad(secs % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* ===== Big heart ===== */
+  var bigHeart = document.getElementById('bigHeart');
+  bigHeart.addEventListener('click', function () { burstAt(bigHeart, 24); });
+})();
+</script>
+
+</body></html>
